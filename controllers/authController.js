@@ -49,7 +49,9 @@ exports.confirmarCorreo = async (req, res) => {
       [usuario[0].id]
     );
 
-    res.json({ mensaje: 'Correo confirmado exitosamente' });
+    // res.json({ mensaje: 'Correo confirmado exitosamente' });
+    res.redirect('http://localhost:5173/');
+
   } catch (error) {
     res.status(500).json({ mensaje: 'Error al confirmar correo', error });
   }
@@ -100,7 +102,9 @@ exports.solicitarRecuperacion = async (req, res) => {
       [token, expiracion, usuario.id]
     );
 
-    const url = `http://localhost:3000/api/auth/restablecer/${token}`;
+    // const url = `http://localhost:3000/api/auth/restablecer/${token}`;
+    const url = `http://localhost:5173/nueva-contrasena/${token}`;
+
     const html = `<p>Hola ${usuario.nombre}, haga clic en el siguiente enlace para restablecer su contraseña:</p>
                   <a href="${url}">${url}</a>`;
 
