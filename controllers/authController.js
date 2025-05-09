@@ -23,7 +23,7 @@ exports.registrarUsuario = async (req, res) => {
       [nombre, correo, telefono, hash, token]
     );
 
-    const confirmacionUrl = `http://localhost:3000/api/auth/confirmar/${token}`;
+    const confirmacionUrl = `https://realnexor.com/api/auth/confirmar/${token}`;
     const html = `<p>Hola ${nombre}, confirme su correo dando clic en el siguiente enlace:</p><a href="${confirmacionUrl}">${confirmacionUrl}</a>`;
 
     await sendEmail(correo, 'Confirme su cuenta', html);
@@ -50,7 +50,7 @@ exports.confirmarCorreo = async (req, res) => {
     );
 
     // res.json({ mensaje: 'Correo confirmado exitosamente' });
-    res.redirect('http://localhost:5173/');
+    res.redirect('https://realnexor.com/');
 
   } catch (error) {
     res.status(500).json({ mensaje: 'Error al confirmar correo', error });
@@ -103,7 +103,7 @@ exports.solicitarRecuperacion = async (req, res) => {
     );
 
     // const url = `http://localhost:3000/api/auth/restablecer/${token}`;
-    const url = `http://localhost:5173/nueva-contrasena/${token}`;
+    const url = `https://realnexor.com/nueva-contrasena/${token}`;
 
     const html = `<p>Hola ${usuario.nombre}, haga clic en el siguiente enlace para restablecer su contraseña:</p>
                   <a href="${url}">${url}</a>`;
